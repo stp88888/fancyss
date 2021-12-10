@@ -7,7 +7,7 @@
 # Ref https://code.google.com/p/autoproxy-gfwlist/wiki/Rules    
  
 import sys
-import urllib.request
+import urllib2 
 import re
 import os
 import datetime
@@ -35,13 +35,13 @@ tmpfile = '/tmp/gfwlisttmp'
 #outfile = '/tmp/gfwlist.conf'
 #rulesfile = '/etc/dnsmasq.d/gfwlist.conf'
  
-fs =  open(outfile, 'w')
+fs =  file(outfile, 'w')
 #fs.write('# gfw list ipset rules for dnsmasq\n')
 #fs.write('# updated on ' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + '\n')
 #fs.write('#\n')
  
-print ('fetching list...')
-content = urllib.request.urlopen(baseurl, timeout=15).read().decode('base64')
+print 'fetching list...'
+content = urllib2.urlopen(baseurl, timeout=15).read().decode('base64')
  
 # write the decoded content to file then read line by line
 tfs = open(tmpfile, 'w')
@@ -49,7 +49,7 @@ tfs.write(content)
 tfs.close()
 tfs = open(tmpfile, 'r')
  
-print ('page content fetched, analysis...')
+print 'page content fetched, analysis...'
  
 # remember all blocked domains, in case of duplicate records
 domainlist = []
@@ -85,5 +85,5 @@ fs.close();
 #print 'restart dnsmasq...'
 #print os.popen('/etc/init.d/dnsmasq restart').read()
  
-print ('saving to file: ', outfile)
-print ('done!')
+print 'saving to file: ', outfile
+print 'done!'
