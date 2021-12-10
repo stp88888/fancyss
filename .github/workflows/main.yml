@@ -24,6 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
       # Runs a single command using the runners shell
       - name: chmod 777
@@ -32,3 +35,14 @@ jobs:
       - name: run auto-update rule action
         working-directory: ./rules/auto_update
         run: ./update_rules.sh
+
+      - name: Commit files
+        run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: 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
+          branch: master
