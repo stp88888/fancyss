@@ -29,5 +29,8 @@ jobs:
       - name: chmod 777
         run: chmod -R 777 ./rules
       
+      - name: change director
+        run: cd ./rules/auto_update
+      
       - name: run auto-update rule action
-        run: sh ./rules/auto_update/update_rules.sh
+        run: sh update_rules.sh
