@@ -49,4 +49,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: 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
-          branch: master
