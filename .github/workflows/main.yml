@@ -19,10 +19,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ '2.x']
-
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,4 +31,4 @@ jobs:
       
       - name: run auto-update rule action
         working-directory: ./rules/auto_update
-      - run: ./update_rules.sh
+        run: ./update_rules.sh
