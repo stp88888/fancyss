@@ -34,8 +34,5 @@ jobs:
         run: chmod -R 777 ./rules
       
       - name: run auto-update rule action
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
-          working-directory: ./rules/auto_update
+        working-directory: ./rules/auto_update
       - run: ./update_rules.sh
