@@ -31,4 +31,4 @@ jobs:
       
       - name: run auto-update rule action
         working-directory: ./rules/auto_update
-        run: sh update_rules.sh
+        run: ./update_rules.sh
