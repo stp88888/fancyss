@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: chmod 777
-        run: chmod -R 777 /rules
+        run: chmod -R 777 ./rules
       
       - name: run auto-update rule action
-        run: sh /rules/auto_update/update_rules.sh
+        run: sh ./rules/auto_update/update_rules.sh
