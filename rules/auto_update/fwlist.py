@@ -44,7 +44,7 @@ print ('fetching list...')
 content = base64.b64decode(urllib.request.urlopen(baseurl, timeout=15).read())
  
 # write the decoded content to file then read line by line
-tfs = open(tmpfile, 'w')
+tfs = open(tmpfile, 'wb')
 tfs.write(content)
 tfs.close()
 tfs = open(tmpfile, 'r')
